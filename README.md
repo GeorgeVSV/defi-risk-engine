@@ -52,7 +52,7 @@ pip install -r requirements.txt
 ```
 
 ## Usage
-### Updating the **[DeFi Data Collectors](https://github.com/GeorgeVSV/defi-data-collectors.git)** submodule
+Updating the **[DeFi Data Collectors](https://github.com/GeorgeVSV/defi-data-collectors.git)** submodule
 If the DeFi Data Collectors repo is updated, sync it in the Risk Engine:
 ```bash
 git submodule update --remote
