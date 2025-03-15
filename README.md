@@ -1,7 +1,7 @@
-# DeFi RISC Engine
+# DeFi RISK Engine
 
 ## Overview
-DeFi RISC Engine is an **open-source risk modeling tool** for DeFi protocols, designed to assess institutional lending risks using raw on-chain data. The project focuses on **modular, autonomous, and scalable** risk computation, starting with Health Factor (HF) prediction.
+DeFi RISK Engine is an **open-source risk modeling tool** for DeFi protocols, designed to assess institutional lending risks using raw on-chain data. The project focuses on **modular, autonomous, and scalable** risk computation, starting with Health Factor (HF) prediction.
 
 ## Key Features
 - **Raw On-Chain Data** – No third-party APIs, ensuring institutional-grade reliability.
@@ -20,7 +20,7 @@ The first milestone is to develop a **functional Risk Engine** that:
 
 ## Project Structure
 ```
-risc-engine/
+-engine/
 │── data_collectors/        # Submodule for fetching raw blockchain data
 │── data_processing/        # Processes fetched data into structured format
 │   ├── processor.py
@@ -41,8 +41,8 @@ risc-engine/
 ## Installation
 ```bash
 # Clone the repository
-git clone --recursive https://github.com/yourusername/risc-engine.git
-cd risc-engine
+git clone --recursive https://github.com/yourusername/risk-engine.git
+cd risk-engine
 
 # Initialize and update submodules
 git submodule update --init --recursive
