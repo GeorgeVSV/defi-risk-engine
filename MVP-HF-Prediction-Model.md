@@ -26,7 +26,7 @@ where $t_{0}$ is the current moment of time.
 
 After we put it all together, we get:
 
-$$HF(\Delta t, t_{0}) = {Collateral Amount * Predicted Collateral Exchange Rate (t_{0} + \Delta t) \over (1 + n)^{\Delta t \over \tau} * Loan Value}.$$
+$$HF(\Delta t, t_{0}) = {Collateral Amount * Predicted Collateral Exchange Rate (t_{0} + \Delta t) * Liquidation Threshold \over (1 + n)^{\Delta t \over \tau} * Loan Value}.$$
 
 For our exchange rate prediction function we will take the simplest approach.
 We will assume the exchange rate will continue to follow curent trade linearly.
@@ -39,6 +39,6 @@ $Collateral Exchange Rate (t_{0})$ is the exchange rate at this moment.
 
 So we can put this together again:
 
-$$HF(\Delta t, t_{0}) = {Collateral Amount * (k*\Delta t + Collateral Exchange Rate (t_{0})) \over (1 + n)^{\Delta t \over \tau} * Loan Value}.$$
+$$HF(\Delta t, t_{0}) = {Collateral Amount * (k*\Delta t + Collateral Exchange Rate (t_{0})) * Liquidation Threshold \over (1 + n)^{\Delta t \over \tau} * Loan Value}.$$
 
 This is a very rough approximation, but it is suitable for a MVP(Minimal Value Product). All the terms in the HF equations are known at the current moment.
