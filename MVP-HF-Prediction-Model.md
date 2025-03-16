@@ -1,4 +1,4 @@
-#MVP HF Calculation model for crypto lending
+# MVP HF Calculation model for crypto lending
 
 This Basic Health Factor(HF) Calculation model predicts possible HF sometime $\Delta t$ in the future.
 
@@ -37,4 +37,4 @@ So, we can put this together again:
 
 $$HF(\Delta t, t_{0}) = {Collateral Amount * (k*\Delta t + Collateral Exchange Rate (t_{0})) * Liquidation Threshold \over (1 + n)^{\Delta t \over \tau} * Loan Value(t_{0})}.$$
 
-##This is a very rough approximation, but it is suitable for an MVP. All the terms in the HF equations are known at the current moment.
+## This is a very rough approximation, but it is suitable for an MVP. All the terms in the HF equations are known at the current moment.
