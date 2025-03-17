@@ -2,6 +2,8 @@
 
 ### Disclaimer: This is a very rough approximation, but it is suitable for an MVP. All the terms in the HF equations are known at the current moment.
 
+### This method is mostly suitable for situations where trends are very apparent.
+
 This Basic Health Factor(HF) Calculation model predicts possible HF sometime $\Delta t$ in the future.
 
 HF can be found using this formula:
