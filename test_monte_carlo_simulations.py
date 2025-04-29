@@ -7,36 +7,29 @@ def reflection_liquidation_probability(start_price, liq_price, sigma, T_days):
     a = np.log(start_price / liq_price)
     return 2 * norm.cdf(-a / (sigma * np.sqrt(T)))
 
-# Example:
+# Parameters
 start_price = 1500
 liq_price = 1212
-sigma = 0.8  # annualized
+sigma = 0.8  # annualized volatility
 T_days = 7
+dt = 1 / 365
+num_paths = 100_000
 
+# Theoretical result
 p_theoretical = reflection_liquidation_probability(start_price, liq_price, sigma, T_days)
 print(f"Theoretical probability (Reflection Principle): {p_theoretical:.4f}")
 
+### Optimized Monte Carlo Simulation with Early Stopping #########################
+liquidated_count = 0
 
-### Monte-Carlo Simulation #########################################################
-num_paths = 100_000
-dt = 1/365
-steps = T_days  # since 1 day = 1 step
+for _ in range(num_paths):
+    price = start_price
+    for _ in range(T_days):
+        Z = np.random.normal()
+        price *= np.exp(sigma * np.sqrt(dt) * Z)
+        if price <= liq_price:
+            liquidated_count += 1
+            break  # stop early if liquidation occurs
 
-# Simulate random walk
-Z = np.random.normal(0, 1, size=(num_paths, steps))
-price_paths = np.zeros_like(Z)
-price_paths[:, 0] = start_price * np.exp(sigma * np.sqrt(dt) * Z[:, 0])
-
-for t in range(1, steps):
-    price_paths[:, t] = price_paths[:, t-1] * np.exp(sigma * np.sqrt(dt) * Z[:, t])
-
-# Check for liquidation
-liquidated = (price_paths <= liq_price).any(axis=1)
-p_monte_carlo = liquidated.mean()
-
-print(f"Monte Carlo estimated probability: {p_monte_carlo:.4f}")
-
-
-
-
-
+p_monte_carlo_fast = liquidated_count / num_paths
+print(f"Monte Carlo estimated probability (early stopping): {p_monte_carlo_fast:.4f}")
