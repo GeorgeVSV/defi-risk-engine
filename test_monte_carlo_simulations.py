@@ -69,13 +69,14 @@ plt.figure(figsize=(6,4))
 plt.plot(df["days"], df["p_theoretical"], marker="o", label="Theory")
 plt.plot(df["days"], df["p_monte_carlo_gbm"], marker="x", label="MC – GBM")
 plt.plot(df["days"], df["p_monte_carlo_euler"], marker="^", label="MC – Euler")
+plt.plot(df["days"], abs(df["p_monte_carlo_euler"] - df["p_theoretical"]), marker="s", linestyle="--", label="Euler – Theory Δ")
+plt.plot(df["days"], abs(df["p_monte_carlo_gbm"] - df["p_theoretical"]), marker="s", linestyle="--", label="GBM – Theory Δ")
 plt.xlabel("time horizon (days)")
 plt.ylabel("liquidation probability")
-plt.title("Theoretical vs. Monte Carlo (GBM and Euler)")
+plt.title("Theoretical vs. Monte Carlo (GBM, Euler, and Δ)")
 plt.legend()
 plt.tight_layout()
 plt.show()
-
 
 # --- 5. formatted output for whitepaper -----------------------------------------------
 print("\nTheoretical (Reflection Principle):")
@@ -89,3 +90,15 @@ for _, row in df.iterrows():
 print("\nMonte Carlo – Euler:")
 for _, row in df.iterrows():
     print(f" ({row['days']}, {round(row['p_monte_carlo_euler'], 6)})")
+
+print("\nAbs. Difference (GBM – Theory):")
+for _, row in df.iterrows():
+    diff = abs(round(row['p_monte_carlo_gbm'] - row['p_theoretical'], 6))
+    print(f" ({row['days']}, {diff})")
+
+print("\nAbs. Difference (Euler – Theory):")
+for _, row in df.iterrows():
+    diff = abs(round(row['p_monte_carlo_euler'] - row['p_theoretical'], 6))
+    print(f" ({row['days']}, {diff})")
+
+
