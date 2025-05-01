@@ -10,7 +10,7 @@ liq_price   = 1_212
 sigma       = 0.80           # annualised volatility
 dt          = 1/365
 num_paths   = 100_000
-horizons    = [3, 7, 14, 30, 60]
+horizons    = [3, 7, 14, 30, 60, 90, 120]
 
 # --- 2. helper functions -------------------------------------------------------
 def p_theoretical(s0, s_liq, sig, t_days):
