@@ -1,5 +1,7 @@
 # DeFi RISK Engine
 
+[![arXiv](https://img.shields.io/badge/arXiv-2505.08100-b31b1b.svg)](https://arxiv.org/abs/2505.08100)
+
 ## Overview
 DeFi RISK Engine is an **open-source risk modeling tool** for DeFi protocols, designed to assess institutional lending risks using raw on-chain data. The project focuses on **modular, autonomous, and scalable** risk computation, starting with Health Factor (HF) prediction.
 
